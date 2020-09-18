@@ -105,6 +105,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void deleteById(String id) {
         blogMapper.deleteById(id);
+        // 取出分类，当前分类博客数-1
+        Integer blogType = blogMapper.getBlogType(id);
+        Type type = typeMapper.getById(blogType);
+        type.setTypeBlogCount(type.getTypeBlogCount() - 1);
+        typeMapper.update(type);
     }
 
     @Override

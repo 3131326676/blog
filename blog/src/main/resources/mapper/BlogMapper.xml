@@ -158,5 +158,11 @@
         from bl_blog
         order by created_time desc
     </select>
+    <select id="getBlogType" resultType="java.lang.Integer">
+        select
+        blog_type
+        from bl_blog
+        where blog_id = #{blogId}
+    </select>
 
 </mapper>

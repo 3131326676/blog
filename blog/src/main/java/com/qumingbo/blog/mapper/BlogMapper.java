@@ -75,4 +75,11 @@ public interface BlogMapper {
      * @param blogId
      */
     void updateGoods(String blogId);
+
+    /**
+     * 根据博客id查询博客分类
+     * @param id 博客id
+     * @return 博客分类
+     */
+    Integer getBlogType(String id);
 }
