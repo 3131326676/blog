@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan("com.jg.blog.mapper")
+@MapperScan("com.qumingbo.blog.mapper")
 public class BlogApplication {
 
     public static void main(String[] args) {
