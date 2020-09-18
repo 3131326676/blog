@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qumingbo.blog.mapper.UserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.qumingbo.blog.pojo.User">
+        <id column="user_id" property="userId"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="header" property="header"/>
+        <result column="nickname" property="nickname"/>
+        <result column="user_email" property="userEmail"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="version" property="version"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, username, password, name, sex, header, nickname, user_email, created_time, update_time, version, deleted
+    </sql>
+    <insert id="save" parameterType="com.qumingbo.blog.pojo.User">
+        insert into bl_user(
+            username, password, name, sex, header, nickname, user_email
+        ) values (
+            #{username}, #{password}, #{name}, #{sex},
+            #{header}, #{nickname}, #{userEmail}
+        )
+    </insert>
+    <update id="update" parameterType="com.qumingbo.blog.pojo.User">
+        update bl_user set
+        version = version + 1
+        <if test="username!=null and username!=''">
+            ,username = #{username}
+        </if>
+        <if test="password!=null and password!=''">
+            ,password = #{password}
+        </if>
+        <if test="name!=null and name!=''">
+            ,name = #{name}
+        </if>
+        <if test="sex!=null and sex!=''">
+            ,sex = #{sex}
+        </if>
+        <if test="header!=null and header!=''">
+            ,header = #{header}
+        </if>
+        <if test="nickname!=null and nickname!=''">
+            ,nickname = #{nickname}
+        </if>
+        <if test="userEmail!=null and userEmail!=''">
+            ,user_email = #{userEmail}
+        </if>
+        where user_id = #{userId}
+        and version = #{version}
+    </update>
+    <update id="deleteById">
+        update bl_user set
+        deleted = 1
+        where user_id = #{id}
+    </update>
+    <update id="updateInfo">
+        update bl_user
+        <set>
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password!=''">
+                password = #{password},
+            </if>
+            <if test="name!=null and name!=''">
+                name = #{name},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex = #{sex},
+            </if>
+            <if test="header!=null and header!=''">
+                header = #{header},
+            </if>
+            <if test="nickname!=null and nickname!=''">
+                nickname = #{nickname},
+            </if>
+            <if test="userEmail!=null and userEmail!=''">
+                user_email = #{userEmail},
+            </if>
+        </set>
+        where user_id = #{userId}
+    </update>
+    <select id="getById" resultMap="BaseResultMap">
+        select
+        user_id, username, name, sex, header,
+        nickname, user_email, version
+        from bl_user
+        where user_id = #{id}
+        and deleted = 0
+    </select>
+    <select id="getByPage" parameterType="com.qumingbo.blog.utils.Page" resultMap="BaseResultMap">
+        select
+        user_id, username, name, sex, header, nickname, user_email, created_time, update_time
+        from bl_user
+        where
+        deleted = 0
+        <if test="params.username!=null and params.username!=''">
+            and username = #{params.username}
+        </if>
+        <if test="params.name!=null and params.name!=''">
+            and name like CONCAT('%', #{params.name}, '%')
+        </if>
+        <if test="params.sex!=null and params.sex!=''">
+            and sex = #{params.sex}
+        </if>
+        <if test="params.nickname!=null and params.nickname!=''">
+            and nickname like CONCAT('%', #{params.nickname}, '%')
+        </if>
+        <if test="params.userEmail!=null and params.userEmail!=''">
+            and user_email like CONCAT(#{params.userEmail}, '%')
+        </if>
+        <if test="sortColumn!=null and sortColumn!=''">
+            order by ${sortColumn} ${sortMethod}
+        </if>
+        limit #{index}, #{pageSize}
+    </select>
+    <select id="getCountByPage" parameterType="com.qumingbo.blog.utils.Page" resultType="java.lang.Integer">
+        select
+        count(*)
+        from bl_user
+        where
+        deleted = 0
+        <if test="params.username!=null and params.username!=''">
+            and username = #{params.username}
+        </if>
+        <if test="params.name!=null and params.name!=''">
+            and name like CONCAT('%', #{params.name}, '%')
+        </if>
+        <if test="params.sex!=null and params.sex!=''">
+            and sex = #{params.sex}
+        </if>
+        <if test="params.nickname!=null and params.nickname!=''">
+            and nickname like CONCAT('%', #{params.nickname}, '%')
+        </if>
+        <if test="params.userEmail!=null and params.userEmail!=''">
+            and user_email like CONCAT(#{params.userEmail}, '%')
+        </if>
+    </select>
+    <select id="getByIds" resultMap="BaseResultMap">
+        select
+        user_id, version
+        from bl_user
+        where user_id in
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        and deleted = 0
+    </select>
+    <select id="getByUsername" resultMap="BaseResultMap">
+        select
+        user_id, username, password,
+        sex, header, nickname, user_email, deleted
+        from bl_user
+        where username = #{username}
+    </select>
+
+</mapper>

@@ -1,0 +1,8 @@
+server:
+  port: 1000
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.jg
+spring:
+  profiles:
+    active: dev
