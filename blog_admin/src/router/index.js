@@ -111,12 +111,6 @@ export const constantRoutes = [
         meta: { title: '系统日志', icon: 'table' }
       },
       {
-        path: 'music',
-        name: 'Music',
-        component: () => import('@/views/sys/music/music-list'),
-        meta: { title: '音乐欣赏', icon: 'table' }
-      },
-      {
         path: 'link',
         name: 'Link',
         component: () => import('@/views/sys/link/link-list'),
