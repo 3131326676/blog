@@ -79,7 +79,7 @@
 
     <!-- 阅读弹窗 -->
     <el-dialog title="阅读" :visible.sync="readDialog" width="50%">
-      <MarkdownPreview :initial-value="blog.blogContent" />
+      <article v-html="blog.blogContent" />
     </el-dialog>
 
     <!-- 修改弹窗 -->
@@ -92,12 +92,10 @@
 <script>
 import blogApi from '@/api/blog'
 import BlogAdd from './blog-add'
-import { MarkdownPreview } from 'vue-meditor'
 import BlogUpdate from './blog-update'
 export default {
   components: {
     BlogAdd,
-    MarkdownPreview,
     BlogUpdate
   },
   data() {

@@ -26,7 +26,7 @@
         </el-upload>
       </el-form-item>
       <el-form-item label="内容">
-        <MarkdownPro v-model="blog.blogContent" />
+        <mavon-editor v-model="blog.blogContent" :ishljs="true" @change="change" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="mini" @click="onSubmit">提交</el-button>
@@ -38,12 +38,8 @@
 
 <script>
 import blogApi from '@/api/blog'
-import { MarkdownPro } from 'vue-meditor'
 import { getToken } from '@/utils/auth'
 export default {
-  components: {
-    MarkdownPro
-  },
   props: {
     blog: {
       type: Object,
@@ -66,6 +62,10 @@ export default {
     }
   },
   methods: {
+    change(value, render) {
+      // render 为 markdown 解析后的结果(转化成了HTML格式）
+      this.blog.blogContent = render
+    },
     onSubmit() {
       blogApi.update(this.blog).then(res => {
         this.$message.success(res.msg)

@@ -5,7 +5,7 @@
         <el-input v-model="about.aboutTitle" />
       </el-form-item>
       <el-form-item label="内容">
-        <MarkdownPro v-model="about.aboutContent" />
+        <mavon-editor v-model="about.aboutContent" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="mini" @click="onSubmit">提交</el-button>
@@ -17,11 +17,7 @@
 
 <script>
 import aboutApi from '@/api/about'
-import { MarkdownPro } from 'vue-meditor'
 export default {
-  components: {
-    MarkdownPro
-  },
   data() {
     return {
       about: {}

@@ -67,7 +67,7 @@
     />
 
     <!-- 添加弹窗 -->
-    <el-dialog title="添加" :visible.sync="addDialog">
+    <el-dialog title="添加" :visible.sync="addDialog" fullscreen="true">
       <about-add @closeAddDialog="closeAddDialog" @getByPage="getByPage" />
     </el-dialog>
 
@@ -76,7 +76,7 @@
       <div v-html="about.aboutContent" />
     </el-dialog>
     <!-- 修改弹窗 -->
-    <el-dialog title="修改" :visible.sync="updateDialog">
+    <el-dialog title="修改" :visible.sync="updateDialog" fullscreen="true">
       <about-update :about="about" @closeUpdateDialog="closeUpdateDialog" @getByPage="getByPage" />
     </el-dialog>
   </div>

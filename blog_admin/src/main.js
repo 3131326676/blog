@@ -11,10 +11,14 @@ import App from './App'
 import store from './store'
 import router from './router'
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
 import '@/icons' // icon
 import '@/permission' // permission control
 
 Vue.use(ElementUI)
+Vue.use(mavonEditor)
 
 Vue.config.productionTip = false
 
