@@ -43,8 +43,13 @@ export default {
 }
 
 .link-container a {
-  font-size: 24px;
+  font-size: 16px;
   min-width: 60px;
   margin-right: 15px;
+  color:black;
+}
+
+.link-container a:hover {
+  color: aqua;
 }
 </style>

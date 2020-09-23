@@ -203,6 +203,7 @@ export default {
 .user-comment {
   margin-top: 15px;
   background-color: #fff;
+  padding: 10px;
 }
 .comment-bg {
   background-color: #fff;

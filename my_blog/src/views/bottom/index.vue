@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bottom-text">
-      Copyright©2020 | 本博客使用vue搭建 | 如果不确定做不做，那就先做做试试
+      Copyright©2020 | 如果不确定做不做，那就先做做试试
     </div>
   </div>
 </template>

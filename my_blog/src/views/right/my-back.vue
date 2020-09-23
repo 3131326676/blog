@@ -10,26 +10,14 @@
         <div class="social-container">
           <div class="social-text">社交：</div>
           <div class="social-item">
-            <a href="https://me.csdn.net/qq_36403693">
-              <img src="@/assets/icons/csdn.png" class="social-icon">
-            </a>
-            <a href="https://gitee.com/yangdeshi">
+            <a href="https://gitee.com/qumingbo98">
               <img src="@/assets/icons/gitee.png" class="social-icon">
             </a>
-            <a href="http://wpa.qq.com/msgrd?v=3&uin=1579106394&site=qq&menu=yes">
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=3131326676&site=qq&menu=yes">
               <img src="@/assets/icons/qq.png" class="social-icon">
             </a>
-            <a href="https://github.com/1579106394">
+            <a href="https://github.com/3131326676">
               <img src="@/assets/icons/github.png" class="social-icon">
-            </a>
-          </div>
-        </div>
-        <a-divider />
-        <div class="social-container">
-          <div class="social-text">加入我们：</div>
-          <div class="join-item">
-            <a href="//shang.qq.com/wpa/qunwpa?idkey=c3929a708c3565df98464b67b976dc29c02ded8367e5f6a7a779e79f3dd056f9">
-              <img src="@/assets/icons/QQqun.png" class="social-icon">
             </a>
           </div>
         </div>
