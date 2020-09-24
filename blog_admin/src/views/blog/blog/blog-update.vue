@@ -26,7 +26,7 @@
         </el-upload>
       </el-form-item>
       <el-form-item label="内容">
-        <mavon-editor v-model="blog.blogContent" :ishljs="true" @change="change" />
+        <mavon-editor v-model="blog.blogContent" :ishljs="true" @imgAdd="$imgAdd" @change="change" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="mini" @click="onSubmit">提交</el-button>
@@ -39,6 +39,7 @@
 <script>
 import blogApi from '@/api/blog'
 import { getToken } from '@/utils/auth'
+import axios from 'axios'
 export default {
   props: {
     blog: {
@@ -62,6 +63,21 @@ export default {
     }
   },
   methods: {
+    $imgAdd(pos, $file) {
+      // 第一步.将图片上传到服务器.
+      const formdata = new FormData()
+      formdata.append('file', $file)
+      axios({
+        url: this.uploadUrl,
+        method: 'POST',
+        data: formdata,
+        headers: { 'Content-Type': 'multipart/form-data; charset=utf-8', Authorization: getToken() }
+      }).then((res) => {
+        // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+        // $vm.$img2Url 详情见本页末尾
+        this.$refs.md.$img2Url(pos, res.data.data)
+      })
+    },
     change(value, render) {
       // render 为 markdown 解析后的结果(转化成了HTML格式）
       this.blog.blogContent = render
