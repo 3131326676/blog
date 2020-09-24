@@ -5,6 +5,7 @@ import com.qumingbo.blog.utils.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,7 +28,7 @@ public class UploadController {
      * @return
      */
     @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-    public Result<String> uploadImage(MultipartFile file) {
+    public Result<String> uploadImage(@RequestParam MultipartFile file) {
         String url = uploadService.uploadImage(file);
         return new Result<>("上传成功！", url);
     }
