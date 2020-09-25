@@ -79,7 +79,7 @@
 
     <!-- 阅读弹窗 -->
     <el-dialog title="阅读" :visible.sync="readDialog" width="50%">
-      <article v-html="blog.blogContent" />
+      <div v-highlight v-html="blog.blogContent" />
     </el-dialog>
 
     <!-- 修改弹窗 -->
@@ -93,6 +93,7 @@
 import blogApi from '@/api/blog'
 import BlogAdd from './blog-add'
 import BlogUpdate from './blog-update'
+import marked from 'marked'
 export default {
   components: {
     BlogAdd,
@@ -164,6 +165,7 @@ export default {
     toRead(id) {
       blogApi.get(id).then(res => {
         this.blog = res.data
+        this.blog.blogContent = marked(this.blog.blogContent, { sanitize: true })
         this.readDialog = true
       })
     },

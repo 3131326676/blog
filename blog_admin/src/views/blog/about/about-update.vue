@@ -5,7 +5,7 @@
         <el-input v-model="about.aboutTitle" />
       </el-form-item>
       <el-form-item label="内容">
-        <mavon-editor v-model="about.aboutContent" />
+        <mavon-editor ref="md" v-model="about.aboutContent" :tab-size="4" @imgAdd="$imgAdd" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="mini" @click="onSubmit">提交</el-button>
@@ -17,6 +17,7 @@
 
 <script>
 import aboutApi from '@/api/about'
+import axios from 'axios'
 export default {
   props: {
     about: {
@@ -29,6 +30,21 @@ export default {
     }
   },
   methods: {
+    $imgAdd(pos, $file) {
+      // 第一步.将图片上传到服务器.
+      const formdata = new FormData()
+      formdata.append('file', $file)
+      axios({
+        url: this.uploadUrl,
+        method: 'POST',
+        data: formdata,
+        headers: { 'Content-Type': 'multipart/form-data; charset=utf-8' }
+      }).then((res) => {
+        // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+        // $vm.$img2Url 详情见本页末尾
+        this.$refs.md.$img2Url(pos, res.data.data)
+      })
+    },
     onSubmit() {
       aboutApi.update(this.about).then(res => {
         this.$message.success(res.msg)

@@ -10,7 +10,7 @@
           <a-icon type="like" /> {{ blog.blogGoods }}点赞
         </div>
       </div>
-      <div class="blog-content" v-html="blog.blogContent" />
+      <div v-highlight class="blog-content" v-html="blog.blogContent" />
       <div v-if="user.username" class="blog-action">
         <a href="javascript:void(0);" :class="isGood ? 'blog-good meta-active' : 'blog-good'" @click="saveGoods">
           <a-icon type="like" /> 点赞
@@ -48,6 +48,7 @@
 <script>
 import blogApi from '@/api/blog'
 import commentApi from '@/api/comment'
+import marked from 'marked'
 export default {
   data() {
     return {
@@ -94,6 +95,7 @@ export default {
     getBlogInfo(blogId) {
       blogApi.readById(blogId).then(res => {
         this.blog = res.data
+        this.blog.blogContent = marked(this.blog.blogContent, { sanitize: true })
       })
     },
     getComment() {

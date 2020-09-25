@@ -14,7 +14,7 @@
 
     <!-- 列表 -->
     <el-table :data="page.list" border style="width: 100%" @sort-change="changeSort">
-      <el-table-column prop="aboutId" label="变高" />
+      <el-table-column prop="aboutId" label="编号" />
       <el-table-column prop="aboutTitle" label="标题" width="200" show-overflow-tooltip />
       <el-table-column prop="aboutRead" label="阅读数" sortable="custom" />
       <el-table-column prop="createdTime" label="创建时间" sortable="custom" />
@@ -73,7 +73,7 @@
 
     <!-- 阅读弹窗 -->
     <el-dialog title="阅读" :visible.sync="readDialog" width="50%">
-      <div v-html="about.aboutContent" />
+      <div v-highlight v-html="about.aboutContent" />
     </el-dialog>
     <!-- 修改弹窗 -->
     <el-dialog title="修改" :visible.sync="updateDialog" fullscreen="true">
@@ -86,6 +86,7 @@
 import aboutApi from '@/api/about'
 import AboutAdd from './about-add'
 import AboutUpdate from './about-update'
+import marked from 'marked'
 export default {
   components: {
     AboutAdd,
@@ -172,6 +173,7 @@ export default {
     toRead(id) {
       aboutApi.get(id).then(res => {
         this.about = res.data
+        this.about.aboutContent = marked(this.about.aboutContent, { sanitize: true })
         this.readDialog = true
       })
     },

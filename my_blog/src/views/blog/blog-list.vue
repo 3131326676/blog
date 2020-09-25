@@ -196,6 +196,8 @@ a:hover {
 .blog-cover {
   width: 100%;
   border-radius: 5px;
+  max-width: 200px;
+  max-height: 150px;
 }
 
 .blog-card {

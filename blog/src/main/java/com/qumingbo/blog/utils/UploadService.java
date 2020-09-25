@@ -49,4 +49,12 @@ public class UploadService {
             throw new RuntimeException("【文件上传】上传文件失败！" + e.getMessage());
         }
     }
+
+    /**
+     * 删除文件
+     * @param fileName 文案名
+     */
+    public void deleteImage(String fileName) {
+        storageClient.deleteFile(fileName);
+    }
 }

@@ -33,4 +33,17 @@ public class UploadController {
         return new Result<>("上传成功！", url);
     }
 
+    /**
+     * 删除文件
+     * @param fileName 文件名
+     * @return true或false
+     */
+    @RequestMapping(value = "/deleteImage", method = RequestMethod.POST)
+    public Result<Object> deleteImage(@RequestParam String fileName) {
+        String[] split = fileName.split("/");
+        System.out.println(split);
+        uploadService.deleteImage(fileName);
+        return new Result<Object>(true);
+    }
+
 }

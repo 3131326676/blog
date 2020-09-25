@@ -26,7 +26,7 @@
         </el-upload>
       </el-form-item>
       <el-form-item label="内容">
-        <mavon-editor v-model="blog.blogContent" :ishljs="true" @imgAdd="$imgAdd" @change="change" />
+        <mavon-editor ref="md" v-model="blog.blogContent" :tab-size="4" @imgAdd="$imgAdd" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="mini" @click="onSubmit">提交</el-button>
@@ -77,10 +77,6 @@ export default {
         // $vm.$img2Url 详情见本页末尾
         this.$refs.md.$img2Url(pos, res.data.data)
       })
-    },
-    change(value, render) {
-      // render 为 markdown 解析后的结果(转化成了HTML格式）
-      this.blog.blogContent = render
     },
     onSubmit() {
       blogApi.update(this.blog).then(res => {
