@@ -4,6 +4,7 @@
       <my-back />
       <recommend />
       <my-link />
+      <type-view />
     </div>
   </div>
 </template>
@@ -12,11 +13,13 @@
 import MyBack from './my-back'
 import Recommend from './recommend'
 import MyLink from './link'
+import TypeView from './type-view'
 export default {
   components: {
     MyBack,
     Recommend,
-    MyLink
+    MyLink,
+    TypeView
   }
 }
 </script>

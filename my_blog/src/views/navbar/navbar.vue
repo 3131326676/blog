@@ -12,12 +12,12 @@
               <a-icon type="mail" />首页
             </router-link>
           </a-menu-item>
-          <a-menu-item key="2">
+          <!-- <a-menu-item key="2">
             <router-link to="/type">
 
               <a-icon type="mail" />分类
             </router-link>
-          </a-menu-item>
+          </a-menu-item> -->
           <a-menu-item key="3">
             <router-link to="/timeLine">
               <a-icon type="mail" />时间轴

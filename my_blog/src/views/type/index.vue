@@ -2,7 +2,7 @@
   <div>
     <div class="type-container">
       <div class="type-title">分类</div>
-      <div class="type-count">共计 1 个分类</div>
+      <div class="type-count">共计 {{ typeCount }} 个分类</div>
       <div class="type-content">
         <router-link v-for="item in typeList" :key="item.typeId" :to="'/blogList/'+item.typeId" class="type-item">{{ item.typeName }} （{{ item.typeBlogCount }}）</router-link>
       </div>
@@ -14,7 +14,8 @@ import typeApi from '@/api/type'
 export default {
   data() {
     return {
-      typeList: [] // 分类列表
+      typeList: [], // 分类列表
+      typeCount: 0
     }
   },
   created() {
@@ -24,6 +25,7 @@ export default {
     getTypeList() {
       typeApi.getList().then(res => {
         this.typeList = res.data
+        this.typeCount = this.typeList.length
       })
     }
   }
