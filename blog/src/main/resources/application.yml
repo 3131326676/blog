@@ -5,4 +5,4 @@ mybatis:
   type-aliases-package: com.qumingbo
 spring:
   profiles:
-    active: dev
+    active: pro
