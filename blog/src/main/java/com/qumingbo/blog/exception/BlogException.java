@@ -4,7 +4,7 @@ import com.qumingbo.blog.enums.ResultEnum;
 
 /**
  * 自定义异常
- * @author yds
+ * @author qumingbo
  * @date
  */
 public class BlogException extends RuntimeException {

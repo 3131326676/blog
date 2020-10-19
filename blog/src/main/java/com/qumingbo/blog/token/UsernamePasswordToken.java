@@ -7,7 +7,7 @@ package com.qumingbo.blog.token;
  * 这样做比较繁琐，因此shiro比较适合传统的项目
  * 如果是互联网的项目，建议使用Oauth2
  * 一般导包SpringSecurityOauth2
- * @author yds
+ * @author qumingbo
  */
 public class UsernamePasswordToken extends org.apache.shiro.authc.UsernamePasswordToken {
     /**
