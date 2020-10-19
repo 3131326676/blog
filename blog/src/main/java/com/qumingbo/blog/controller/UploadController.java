@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/10 21:42
  * @Version 1.0
  */

@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * 返回结果枚举
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/9 14:16
  * @Version 1.0
  */

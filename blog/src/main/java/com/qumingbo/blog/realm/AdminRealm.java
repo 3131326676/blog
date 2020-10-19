@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 处理管理员的登录和授权逻辑
  *
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/9 15:45
  * @Version 1.0
  */

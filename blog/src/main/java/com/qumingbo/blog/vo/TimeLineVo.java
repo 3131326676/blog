@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  * 时间轴
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/15 16:52
  * @Version 1.0
  */

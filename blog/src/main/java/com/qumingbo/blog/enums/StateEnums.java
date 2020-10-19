@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * 状态码枚举。所有的状态码都在这里编写
  *
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/9 14:19
  * @Version 1.0
  */

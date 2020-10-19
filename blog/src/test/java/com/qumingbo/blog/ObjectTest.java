@@ -3,7 +3,7 @@ package com.qumingbo.blog;
 import org.junit.Test;
 
 /**
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/16 10:32
  * @Version 1.0
  */

@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 
 /**
  * 点赞实体
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/16 10:22
  * @Version 1.0
  */

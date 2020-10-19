@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 定义统一异常处理
  *
- * @Author: 杨德石
+ * @Author: qumingbo
  * @Date: 2020/2/9 14:25
  * @Version 1.0
  */
